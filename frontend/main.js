@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const res = await fetch('http://localhost:3001/api/mensajes', {
+      const res = await fetch('https://edenhazard.jclc.xyz/api/mensajes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre, email, mensaje, token: captchaToken })
