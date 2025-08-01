@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilo general */
+    
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      text-align: center;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+       
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #555;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Dashboard de Mensajes</h1>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Mensaje</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-mensajes"></tbody>
+    </table>
+    <a href="index.html">← Volver al formulario</a>
+  </div>
+
+  <script>
+    fetch('http://localhost:3001/api/mensajes')
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById('tabla-mensajes');
+        data.forEach(msg => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td data-label="Nombre">${msg.nombre}</td>
+            <td data-label="Email">${msg.email}</td>
+            <td data-label="Mensaje">${msg.mensaje}</td>
+            <td data-label="Fecha">${new Date(msg.fecha).toLocaleString()}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      })
+      .catch(err => {
+        console.error('Error cargando mensajes:', err);
+        alert('No se pudieron cargar los mensajes');
+      });
+  </script>
+</body>
+</html>

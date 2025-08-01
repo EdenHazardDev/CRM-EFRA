@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto Futbolístico</title>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">⚽ Fútbol Conexión</h1>
+      <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#features">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Slider -->
+  <header id="hero" class="hero-slider">
+    <div class="slide active">
+      <h2>Vive la pasión del fútbol</h2>
+      <p>Conéctate con tu comunidad futbolera</p>
+    </div>
+    <div class="slide">
+      <h2>Entrena con los mejores</h2>
+      <p>Accede a recursos de entrenamiento profesional</p>
+    </div>
+    <div class="slide">
+      <h2>Participa en torneos</h2>
+      <p>Únete a eventos y competencias locales</p>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section id="features" class="features-section">
+    <h2>¿Qué ofrecemos?</h2>
+    <div class="features-container">
+      <div class="feature fade-in">
+        <h3>📰 Noticias</h3>
+        <p>Actualizaciones semanales del mundo futbolístico.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>🎯 Entrenamientos</h3>
+        <p>Acceso a sesiones y rutinas personalizadas.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>🏆 Torneos</h3>
+        <p>Inscríbete en ligas locales y gana premios.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="contacto" class="contact-section">
+  <h2>Contacto</h2>
+  <form id="formulario" onsubmit="return validarFormulario()">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu correo" required>
+    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+    <div class="terminos">
+      <label>
+        <input type="checkbox" id="terminos"> Acepto los <a href="#terminos-condiciones" target="_blank">Términos y Condiciones</a>
+      </label>
+    </div>
+
+    <div class="g-recaptcha" data-sitekey="6LezVfsqAAAAADzSPWMGrrlEINkJ0ublHRx5d9rO"></div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="status"></p>
+  <a href="dashboard.html">Ir al dashboard</a>
+</section>
+    <footer>
+        <p>&copy; 2023 Fútbol Conexión. Todos los derechos reservados.</p>  
+
+  <script src="main.js"></script>
+</body>
+</html>
