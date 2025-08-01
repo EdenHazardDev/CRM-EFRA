@@ -1,0 +1,7 @@
+# Ignorar node_modules
+node_modules/
+# Ignorar variables de entorno
+.env
+# Otros comunes (opcional)
+dist/ *.log
+.DS_Store
