@@ -29,3 +29,15 @@ jobs:
         context: ./backend
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/crm-api:latest
+    
+    - name: Deploy to server via SSH
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/crm-api:latest
+          docker stop crm-api || true
+          docker rm crm-api || true
+          docker run -d --name crm-api -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/crm-api:latest
