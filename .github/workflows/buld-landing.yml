@@ -1,4 +1,4 @@
-name: Build and Push Landing Docker Image
+name: crear imagen de docker y subirla a dockerhub
 
 on:
   push:
